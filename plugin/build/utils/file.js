@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.readFile = void 0;
+exports.readFile = readFile;
 const fs_1 = require("fs");
 const path_1 = require("path");
 /**
@@ -17,4 +17,3 @@ function readFile(...path) {
     };
     return { content, write };
 }
-exports.readFile = readFile;
