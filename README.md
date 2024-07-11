@@ -1,43 +1,16 @@
 # @threls/expo-pusher-beams
 
-Pusher Beams client implemnetation for Expo
+This is an attempt of updating @threls/expo-pusher-beams / Pusher Beams client implementation for Expo.
+This is not an official library and this is deprecated / not maintained.
 
-# API documentation
+# Deprecated
+I forked this library to upgrade the Gradle version from 7.6.4 to 8.6 and be able to run it on a Java 17 environment. 
+You have to install this library using `npx expo install @jonathancaspar/JonathanCaspar/expo-pusher-beams`, add this plugin in your `app.json` file, reinstall the native dependencies (using `npx expo prebuild --clean`) then create the android build (using `npx expo run:android`).
 
-- [Documentation for the main branch](https://github.com/expo/expo/blob/main/docs/pages/versions/unversioned/sdk/@threls/pusher-beams.md)
-- [Documentation for the latest stable release](https://docs.expo.dev/versions/latest/sdk/@threls/pusher-beams/)
+I managed to make it work using Java 17 and Gradle 8.6, however I gave up on it for several reasons:
+- nobody is actively maintaining this library
+- this library has a really poor API / documentation and is lacking core functionalities that the native Pusher Beams library offer (such as background message handling)
+- this library is not up-to-date
 
-# Installation in managed Expo projects
-
-For [managed](https://docs.expo.dev/versions/latest/introduction/managed-vs-bare/) Expo projects, please follow the installation instructions in the [API documentation for the latest stable release](#api-documentation). If you follow the link and there is no documentation available then this library is not yet usable within managed projects &mdash; it is likely to be included in an upcoming Expo SDK release.
-
-# Installation in bare React Native projects
-
-For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
-
-### Add the package to your npm dependencies
-
-```
-npm install @threls/expo-pusher-beams
-```
-
-### Configure for iOS
-
-Run `npx pod-install` after installing the npm package.
-
-
-### Configure for Android
-
-### Configure for Web
-
-```
-expo customize:web
-```
-
-
-# Contributing
-
-Contributions are very welcome! Please refer to guidelines described in the [contributing guide]( https://github.com/expo/expo#contributing).
-
-
-This project is tested with BrowserStack.
+In the end, I opted for directly using Firebase Messaging instead of Pusher Beams.
+It requires us to change our backend to use Firebase Messaging and on the frontend we are simply installing the Firebase React Native SDK. Doing this resolved all our problems and we now run on an up-to-date stack.
